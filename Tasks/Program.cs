@@ -36,6 +36,7 @@ else if (task == 29)
 }
 else if (task == 31)
 {
+    Task31();
 
 }
 
@@ -114,34 +115,35 @@ void Task27()
         Console.WriteLine(SumNumbers(array));
     }
 
-    void Method2() {
-    int NumberValue(int numbers)
+    void Method2()
     {
-        int count = 0;
-        int index = 1;
-        while (numbers / index > 0)
+        int NumberValue(int numbers)
         {
-            count++;
-            index = index * 10;
+            int count = 0;
+            int index = 1;
+            while (numbers / index > 0)
+            {
+                count++;
+                index = index * 10;
+            }
+            return count;
         }
-        return count;
-    }
-    int value = NumberValue(numbers);
-    int SumValue(int numbers, int value)
-    {
-        int result = 0;
-        int index = 0;
-        int y = 1;
-        while (index < value)
+        int value = NumberValue(numbers);
+        int SumValue(int numbers, int value)
         {
-            result = result + ((numbers / y) % 10);
-            y = y * 10;
-            index++;
+            int result = 0;
+            int index = 0;
+            int y = 1;
+            while (index < value)
+            {
+                result = result + ((numbers / y) % 10);
+                y = y * 10;
+                index++;
+            }
+            return result;
         }
-        return result;
-    }
-    int result = SumValue(numbers, value);
-    Console.WriteLine(result);
+        int result = SumValue(numbers, value);
+        Console.WriteLine(result);
     }
 }
 
@@ -153,10 +155,39 @@ void Task29()
 */
     Console.Write("Введите размер массива: ");
     int n = Convert.ToInt32(Console.ReadLine());
+    int[] array = new int[n];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(0, 100);
+        Console.Write(array[i] + " ");
+    }
+}
 
-    
+void Task31()
+{
+    /*Дополнительная задача (31): Напишите программу, которая задаёт массив из 10 элементов, 
+которые необходимо заполнить случайными значениями в диапазоне от -10 до 10 и найти максимальное значение среди них
+[-1, 2, 4, 6, -7, 9, -3, -4, -6 ,1] -> 9
+[-5, 1, -9, 6, -7, -2, -3, -4, -6 ,1] -> 6
+[-7, 2, 4, 6, -7, 7, -3, -4, -2 ,1] -> 7*/
 
-
+    int[] array = new int[10];
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(-10, 10);
+        Console.Write(array[i] + " ");
+    }
+    int MaxFind(int[] array)
+    {
+        int max = array[0];
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] > max) max = array[i];
+        }
+        return max;
+    }
+    Console.WriteLine();
+    Console.WriteLine(MaxFind(array));
 }
 
 
